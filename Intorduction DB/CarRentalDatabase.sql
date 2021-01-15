@@ -32,9 +32,9 @@ CREATE TABLE Cars
 ALTER TABLE Cars ADD UNIQUE(PlateNumber)
 
 INSERT INTO Cars
-VALUES ('CB1518AA','BMW','3-rd series',null,null,5,null,'Perfect',1),
-	   ('CB1517AA','BMW','3-rd series',null,null,5,null,'Perfect',1),
-	   ('CB1518AA','BMW','3-rd series',null,null,5,null,'Perfect',1)
+VALUES ('CB1515AA','BMW','3-rd series',null,null,5,null,'Perfect',1),
+	   ('CB1516AA','BMW','3-rd series',null,null,5,null,'Perfect',1),
+	   ('CB1517AA','BMW','3-rd series',null,null,5,null,'Perfect',1)
 
 CREATE TABLE Employees
 (
@@ -49,3 +49,53 @@ INSERT INTO Employees
 VALUES ('Petar','Petrov',null,null),
 	   ('Dragan','Petrov',null,null),
 	   ('Petkan','Petrov',null,null)
+
+CREATE TABLE Customers
+(
+	Id INT PRIMARY KEY IDENTITY, 
+	DriverLicenceNumber VARCHAR(30) NOT NULL,
+	FullName NVARCHAR(90) NOT NULL,
+	[Address] NVARCHAR(150),
+	City NVARCHAR(30), 
+	ZIPCode NVARCHAR(30),
+	Notes NVARCHAR(MAX)
+)
+
+INSERT INTO Customers
+VALUES ('1234567ABC','Ettore Bugatti', null,null,null,null),
+	   ('123456789ABCDE','Ettore Bugatti', null,null,null,null),
+	   ('1234567ABCDE','Ettore Bugatti', null,null,null,null)
+
+CREATE TABLE RentalOrders
+(
+	   Id INT PRIMARY KEY IDENTITY,
+	   EmployeeId INT NOT NULL,
+	   CustomerId INT NOT NULL,
+	   CarId INT NOT NULL, 
+	   TankLevel TINYINT NOT NULL, 
+	   KilometrageStart SMALLINT NOT NULL,
+	   KilometrageEnd SMALLINT NOT NULL, 
+	   TotalKilometrage  SMALLINT NOT NULL,
+	   StartDate DATE NOT NULL, 
+	   EndDate DATE NOT NULL, 
+	   TotalDays SMALLINT, 
+	   RateApplied FLOAT(2) NOT NULL, 
+	   TaxRate FLOAT(2) NOT NULL, 
+	   OrderStatus BIT NOT NULL, 
+	   Notes NVARCHAR(MAX)
+)
+ALTER TABLE RentalOrders
+ALTER COLUMN TankLevel FLOAT(2) NOT NULL;
+ALTER TABLE RentalOrders
+ALTER COLUMN KilometrageStart INT NOT NULL;
+ALTER TABLE RentalOrders
+ALTER COLUMN KilometrageEnd INT NOT NULL;
+ALTER TABLE RentalOrders
+ALTER COLUMN TotalKilometrage  INT NOT NULL;
+
+INSERT INTO RentalOrders
+VALUES (1,2,3,55,52333,55485,55485,'2020-10-14','2021-01-14',null,12.5578,1235.565689,1,null),
+	   (1,2,3,55,52333,55485,55485,'2020-10-14','2021-01-14',null,12.5578,1235.565689,1,null),
+	   (1,2,3,55,52333,55485,55485,'2020-10-14','2021-01-14',null,12.5578,1235.565689,1,null)
+	   
+SELECT * FROM RentalOrders
