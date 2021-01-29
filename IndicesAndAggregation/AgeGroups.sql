@@ -1,4 +1,4 @@
-SELECT AgeGroup, COUNT(Age) AS WizardCount
+SELECT Age, COUNT(AgeGroup) AS WizardCount
 FROM( SELECT AGE,
 		CASE 
 			WHEN Age BETWEEN 0 AND 10 THEN '[0-10]'
@@ -10,4 +10,4 @@ FROM( SELECT AGE,
 			ELSE '[61+]'
 		END AS AgeGroup
 	FROM WizzardDeposits) AS New
-GROUP BY AgeGroup
+GROUP BY Age
