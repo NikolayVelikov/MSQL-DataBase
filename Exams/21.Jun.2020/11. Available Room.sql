@@ -41,4 +41,5 @@ END
 	-- • h.Id = 112 -> The room must be in the provided hotel.
 	-- • r.Beds >= 2 ->	The room must have enough beds for all the people.
 
-SELECT dbo.udf_GetAvailableRoom(94, '2015-07-26', 3)
+SELECT dbo.udf_GetAvailableRoom(112, '2011-12-17', 2)
+SELECT dbo.udf_GetAvailableRoom(94, '2015-07-26', 4)
